@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - bank@localhost" uuid="2f9c74da-47e2-41b3-9817-056d1a73bb9d">
+    <database-info product="MySQL" version="5.6.27-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="bank"/>
+    <table name="fixed_deposit" schema="" catalog="bank" type="TABLE">
+      <column name="fd_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="fd_type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="fd_start_date" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="fd_end_date" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="fd_amount" sqlType="DOUBLE" precision="20" scale="2" nullable="false" jdbcType="8"/>
+      <column name="fd_income" sqlType="DOUBLE" precision="20" scale="2" nullable="false" jdbcType="8"/>
+      <column name="fd_is_valid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="fd_id"/>
+      <foreign-key name="fk_fd_user_id" columns="user_id" ref-table="user" ref-schema="" ref-catalog="bank" ref-columns="user_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_fd_user_id" unique="false" columns="user_id"/>
+    </table>
+    <table name="history" schema="" catalog="bank" type="TABLE">
+      <column name="history_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="history_type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="history_amount" sqlType="DOUBLE" precision="20" scale="2" nullable="false" jdbcType="8"/>
+      <column name="history_date" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="history_id"/>
+      <foreign-key name="fk_history_user_id" columns="user_id" ref-table="user" ref-schema="" ref-catalog="bank" ref-columns="user_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_history_user_id" unique="false" columns="user_id"/>
+    </table>
+    <table name="staff" schema="" catalog="bank" type="TABLE">
+      <column name="staff_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="staff_name" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="staff_password" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="staff_id"/>
+    </table>
+    <table name="user" schema="" catalog="bank" type="TABLE">
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_name" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="user_password" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="user_type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="user_balance" sqlType="DOUBLE" precision="20" scale="2" nullable="false" jdbcType="8"/>
+      <column name="user_interest" sqlType="DOUBLE" precision="20" scale="2" nullable="false" jdbcType="8"/>
+      <column name="user_idcard" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="user_last_settle_interest_date" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="user_id"/>
+      <exported-key name="fk_fd_user_id" table="fixed_deposit" schema="" catalog="bank" columns="user_id"/>
+      <exported-key name="fk_history_user_id" table="history" schema="" catalog="bank" columns="user_id"/>
+    </table>
+  </data-source>
+</component>

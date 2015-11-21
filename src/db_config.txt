@@ -1,0 +1,4 @@
+jdbcUrl = jdbc:mysql://localhost/bank
+user = root
+password = 1234
+devMode = true
