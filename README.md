@@ -1,7 +1,10 @@
 # Software-Engineering-Course-Design-Bank-access-system
 Just a course design
 
-1）打开\WEB-INF\classes\db_config.txt，修改为当前数据库的用户、密码及url。
+**后台采用JFinal，前端采用Bootstrap。
+
+
+1）打开\WEB-INF\classes\db_config.txt，修改为当前数据库的用户、密码及url,通过bank.sql导入数据库。
 
 2）可运行main函数启动jetty服务器。
 
